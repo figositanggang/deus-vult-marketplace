@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "572485955337",
+    "project_id": "dvs-marketplace-39bfa",
+    "storage_bucket": "dvs-marketplace-39bfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572485955337:android:29be87c60d34f2f5ffedd8",
+        "android_client_info": {
+          "package_name": "com.example.code_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572485955337-oh2bd2bdm0s764g6u8tksg3366v3pbls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEsvEFzv_h_P3cQrSkkMWnnc7Hq1-CiS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572485955337-oh2bd2bdm0s764g6u8tksg3366v3pbls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
