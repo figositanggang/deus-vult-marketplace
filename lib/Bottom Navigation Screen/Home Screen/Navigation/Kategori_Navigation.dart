@@ -32,8 +32,9 @@ class _KategoriNavigationScreenState extends State<KategoriNavigationScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: MyAppBar(
+          context,
           title: Text(widget.kategori["name"]),
-          bgColor: primaryColor,
+          bgColor: Theme.of(context).primaryColor,
         ),
         body: SingleChildScrollView(
           child: Padding(

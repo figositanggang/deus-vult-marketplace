@@ -2,6 +2,7 @@ import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Scr
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Profile%20Screen/Profile_Screen.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Shop%20Screen/Shop_Screen.dart';
+import 'package:code_project/Screen/Setting_Screen.dart';
 import 'package:code_project/main.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class _MainScreenState extends State<MainScreen> {
       Icons.account_circle_outlined,
     ];
     final scrollProv = Provider.of<ScrollProvider>(context);
+    final settingProv = Provider.of<SettingScreenProvider>(context);
 
     return Scaffold(
       body: FutureBuilder(
@@ -56,8 +58,9 @@ class _MainScreenState extends State<MainScreen> {
                   padding: const EdgeInsets.all(8),
                   child: Icon(
                     icons[index],
-                    color:
-                        bottomProv.index == index ? Colors.white : Colors.black,
+                    color: bottomProv.index == index
+                        ? Colors.white
+                        : Color.fromARGB(255, 77, 77, 77),
                   ),
                 ),
                 onTap: () async {
@@ -73,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
           }),
         ),
       ),
-      backgroundColor: primaryColor,
+      backgroundColor: primaryColor(context),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:code_project/Firebase/auth_helper.dart';
 import 'package:code_project/Screen/SignUp_Screen.dart';
 import 'package:code_project/Widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
@@ -22,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginProv = Provider.of<LoginScreenProvider>(context);
 
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: primaryColor(context),
       appBar: AppBar(
         foregroundColor: Colors.white,
         automaticallyImplyLeading: false,
@@ -41,9 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.center,
           child: HomeContainer(
             context: context,
-            gradient: false,
             width: MediaQuery.of(context).size.width / 1.25,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.network(
                   "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1664288499/Deus%20Vult%20MarketPlace/deus_vult_ldopaf.png",
@@ -111,8 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             MySecondaryTextButton(
                               text: "SignUp",
                               padding: EdgeInsets.symmetric(horizontal: 30),
-                              bgColor: primaryColor,
-                              elevation: 1,
+                              bgColor: primaryColor(context),
+                              elevation: 0,
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -127,6 +129,35 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "--------------- atau ---------------",
+                ),
+
+                // ================= Login dengan Google ========================
+                SizedBox(height: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    backgroundColor: Colors.white.withOpacity(.25),
+                    foregroundColor: Color.fromARGB(255, 16, 73, 120),
+                    elevation: 0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(FontAwesomeIcons.google,
+                          color: Color.fromARGB(255, 16, 73, 120)),
+                      Text(
+                        "Login dengan Google",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  onPressed: () async {
+                    await auth.signInWithGoogle(context);
+                  },
                 ),
               ],
             ),

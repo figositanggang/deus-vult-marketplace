@@ -8,6 +8,7 @@ import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Navigati
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/carousel_slider_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
 import 'package:code_project/Screen/Product_Screen.dart';
+import 'package:code_project/Screen/Setting_Screen.dart';
 import 'package:code_project/Widget.dart';
 import 'package:code_project/main.dart';
 
@@ -36,13 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final scrollProv = Provider.of<ScrollProvider>(context);
+    final settingProv = Provider.of<SettingScreenProvider>(context);
 
     return HomeContainer(
-      gradient: true,
       context: context,
+      gradient: true,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: MyAppBar(
+          context,
           elevation: 0,
           bgColor: Colors.transparent,
           title: Image.network(
@@ -111,7 +114,7 @@ class _Jumbotron extends StatelessWidget {
             color: Colors.white.withOpacity(.5),
             boxShadow: [
               BoxShadow(
-                color: primaryColor.withOpacity(.25),
+                color: primaryColor(context).withOpacity(.25),
                 offset: Offset(0, 10),
                 blurRadius: 16,
                 spreadRadius: 5,
@@ -214,7 +217,7 @@ class _Jumbotron extends StatelessWidget {
           margin: EdgeInsets.only(right: 5),
           decoration: BoxDecoration(
             color: carouProv.index == index
-                ? primaryColor
+                ? primaryColor(context)
                 : Colors.grey.withOpacity(.5),
             borderRadius: BorderRadius.circular(16),
           ),
@@ -270,7 +273,7 @@ class _Kategori extends StatelessWidget {
     required Map kategori,
   }) {
     return Material(
-      color: primaryColor.withOpacity(.25),
+      color: primaryColor(context).withOpacity(.25),
       child: MyInkWell(
         child: Stack(
           children: [

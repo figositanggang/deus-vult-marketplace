@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Screen.dart';
+import 'package:code_project/Screen/Checkout_Screen.dart';
 import 'package:code_project/Widget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductScreen extends StatefulWidget {
   final Map product;
@@ -18,7 +20,7 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   get product => widget.product;
-  Map<String, String> get spec => product['spec'];
+  String get spec => product['spec'];
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class _ProductScreenState extends State<ProductScreen> {
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
         appBar: MyAppBar(
+          context,
           leading: SizedBox(),
           elevation: 0,
           bgColor: Colors.transparent,
@@ -64,13 +67,12 @@ class _ProductScreenState extends State<ProductScreen> {
                         "IDR ${format.format(product['harga'])}",
                         style: TextStyle(fontSize: 15),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: List.generate(spec.length, (index) {
-                          return Text(
-                            spec.keys.toString(),
-                          );
-                        }),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                          onPressed: _launcUrl,
+                          child: Text("Info Selengkapnya"),
+                        ),
                       ),
                     ],
                   ),
@@ -79,7 +81,49 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
           ),
         ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            MyPrimaryTextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CheckOutScreen(product: product),
+                  ),
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              text: "Beli Sekarang",
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  Future<void> _launcUrl() async {
+    final uri = await Uri.parse(spec);
+    try {
+      await launchUrl(uri);
+    } catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text("Link Rusak"),
+            actions: [
+              MySecondaryTextButton(
+                text: "Back",
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

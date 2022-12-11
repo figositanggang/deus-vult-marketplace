@@ -18,12 +18,13 @@ class _EditUserNavigationState extends State<EditUserNavigation> {
     final dataProv = Provider.of<DataProvider>(context);
 
     return HomeContainer(
-      bgColor: primaryColor,
+      bgColor: primaryColor(context),
       context: context,
       gradient: false,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: MyAppBar(
+          context,
           title: Text("Edit"),
           bgColor: Colors.transparent,
         ),

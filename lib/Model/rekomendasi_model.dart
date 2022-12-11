@@ -7,14 +7,7 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323189/Deus%20Vult%20MarketPlace/accessories/Steelseries_Apex_5_fj07pv.png",
       "harga": 1834731.09,
-      "spec": {
-        "Height": "3.7 cm",
-        "Width": "44.4cm",
-        "Depth": "14.1 cm",
-        "Weight": "0.900kg",
-        "Link":
-            "https://www.rtings.com/keyboard/reviews/steelseries/apex-5-hybrid-mechanical-gaming-keyboard",
-      },
+      "spec": "https://steelseries.com/gaming-keyboards/apex-5",
       "kategori": "Accessories",
     },
     {
@@ -22,18 +15,8 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323199/Deus%20Vult%20MarketPlace/camera/Sony_ZV-1_celwrg.png",
       "harga": 10698000,
-      "spec": {
-        "Sensor Type":
-            "1.0-type (13.2mm x 8.8mm) Exmor RS CMOS sensor, aspect ratio 3:2",
-        "Number of Pixels (Effective)": "Approx. 20.1 Megapixels",
-        "Lens Type":
-            "ZEISS Vario-Sonnar T* Lens, 10 elements in 9 groups (9 aspheric elements including AA lens)",
-        "Optical Zoom": "2.7x",
-        "F-Number (Maximum Aperture)": "F1.8 (W) - 2.8 (T)",
-        "Screen Type":
-            "7.5cm (3.0 type) (4:3) / 921,600 dots / Xtra Fine / TFT LCD",
-        "Flash Mode": "Auto / Flash On / Slow Synchro / Rear Sync / Flash Off",
-      },
+      "spec":
+          "https://www.sony.co.id/id/electronics/cyber-shot-compact-camera/zv-1",
       "kategori": "Camera",
     },
     {
@@ -41,7 +24,8 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323193/Deus%20Vult%20MarketPlace/computer/MSI_Modern_14_jqsvwm.png",
       "harga": 9300000,
-      "spec": {},
+      "spec":
+          "https://www.google.com/aclk?sa=l&ai=DChcSEwiym7ej5bn7AhVdmWYCHZp7CkMYABADGgJzbQ&sig=AOD64_03tfEGDGb7-FtRWMmgkprxKEVr6w&q&adurl&ved=2ahUKEwiR76-j5bn7AhWdILcAHe5VAHkQ0Qx6BAgMEAM",
       "kategori": "Computer",
     },
     {
@@ -49,7 +33,8 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323157/Deus%20Vult%20MarketPlace/kipas%20angin/Arashi_AR_118_SDW_Kipas_Angin_3in1_18_inch_bmsyya.png",
       "harga": 255000,
-      "spec": {},
+      "spec":
+          "https://www.blibli.com/p/arashi-ar-118-sdw-kipas-angin-3in1-18-inch/ps--SEB-60059-00136",
       "kategori": "Kipas Angin",
     },
     {
@@ -57,7 +42,8 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323162/Deus%20Vult%20MarketPlace/mesin%20cuci/MESIN_CUCI_1_TABUNG_4.5_KG_PORTABLE_TOP_LOADING_ARASHI_AWM_451A_eas1vb.png",
       "harga": 615000,
-      "spec": {},
+      "spec":
+          "https://www.tokopedia.com/nadhifahsho/mesin-cuci-1-tabung-4-5-kg-portable-top-loading-arashi-awm-451a",
       "kategori": "Mesin Cuci",
     },
     {
@@ -65,7 +51,7 @@ class RekomendasiModelClass extends ChangeNotifier {
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323169/Deus%20Vult%20MarketPlace/smartphones/Vivo_T1_Pro_5G_a6qqtb.png",
       "harga": 3130000,
-      "spec": {},
+      "spec": "https://www.vivo.com/id/products/t1pro5g",
       "kategori": "Smartphone",
     },
   ];

@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: primaryColor,
+      backgroundColor: primaryColor(context),
       appBar: AppBar(
         foregroundColor: Colors.white,
         automaticallyImplyLeading: false,
@@ -57,6 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             gradient: false,
             width: MediaQuery.of(context).size.width / 1.25,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Image.network(
                   "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1664288499/Deus%20Vult%20MarketPlace/deus_vult_ldopaf.png",

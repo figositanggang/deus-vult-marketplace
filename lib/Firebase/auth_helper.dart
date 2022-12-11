@@ -1,9 +1,13 @@
 import 'package:code_project/Widget.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
 
   // ======== Sign In With Email & Password =========
   Future<void> signUpWithEmailPassword(
@@ -42,7 +46,7 @@ class AuthHelper {
         await user.updateDisplayName(name);
         Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
       } catch (e) {
-        _showDialog(context, e.toString());
+        print(e.toString());
       }
     }
   }
@@ -93,8 +97,6 @@ class AuthHelper {
         _showDialog(context, "Password salah");
       }
     }
-
-    return null;
   }
 
   Future<User?> getUser() async {
@@ -104,7 +106,34 @@ class AuthHelper {
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
+    try {
+      await _auth.signOut();
+      await GoogleSignIn().signOut();
+    } catch (e) {}
+  }
+
+  // ==================== Login dengan Google ====================
+  Future<void> signInWithGoogle(BuildContext context) async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    try {
+      await _auth.signInWithCredential(credential);
+      Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+      await _analytics.logEvent(
+        name: "user_login",
+        parameters: {
+          "full_text": "User telah login menggunakan google",
+        },
+      );
+      print("aw");
+    } on FirebaseAuthException catch (e) {
+      _showDialog(context, e.code);
+    }
   }
 }
 

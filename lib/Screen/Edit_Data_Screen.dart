@@ -25,7 +25,7 @@ class _EditDataScreenState extends State<EditDataScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: primaryColor,
+      backgroundColor: primaryColor(context),
       appBar: AppBar(
         foregroundColor: Colors.white,
         automaticallyImplyLeading: false,

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Screen.dart';
 import 'package:code_project/Screen/Login_Screen.dart';
+import 'package:code_project/Screen/Setting_Screen.dart';
 import 'package:code_project/Screen/SignUp_Screen.dart';
 import 'package:code_project/main.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 // App Bar
-AppBar MyAppBar({
+AppBar MyAppBar(
+  BuildContext context, {
   Widget? title,
   List<Widget>? actions,
   bool? center,
@@ -27,8 +29,8 @@ AppBar MyAppBar({
     centerTitle: center,
     leading: leading,
     toolbarHeight: height,
-    backgroundColor: bgColor ?? Colors.white,
-    foregroundColor: foreColor ?? Colors.black,
+    backgroundColor: bgColor ?? null,
+    // foregroundColor: foreColor ?? Colors.black,
     elevation: elevation ?? 20,
     shadowColor: Colors.black.withOpacity(.25),
     // automaticallyImplyLeading: true,
@@ -71,7 +73,7 @@ Widget MyInkWell({
 Widget ProductCard(BuildContext context,
     {required Map data, Function()? onTap}) {
   return Material(
-    color: primaryColor,
+    color: primaryColor(context),
     child: MyInkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -124,22 +126,51 @@ Widget ProductCard(BuildContext context,
 // Home Container
 Widget HomeContainer({
   required BuildContext context,
-  required bool gradient,
+  bool? gradient,
   required Widget child,
   Color? bgColor,
   double? width,
+  double? height,
 }) {
+  final settingProv = Provider.of<SettingScreenProvider>(context);
+
+  checkBgColor(bool dark) {
+    if (dark != true) {
+      return primaryColor(context);
+    }
+    return null;
+  }
+
+  checkGradient(bool gradient, bool dark) {
+    if (dark == true) {
+      return null;
+    } else if (gradient == true) {
+      return MyLinearGradient;
+    }
+    return null;
+  }
+
   return GestureDetector(
     onTap: () {
       FocusScope.of(context).unfocus();
     },
-    child: Container(
-      width: width ?? double.infinity,
-      decoration: BoxDecoration(
-        gradient: gradient == true ? MyLinearGradient : null,
-        color: bgColor ?? primaryColor,
-      ),
-      child: child,
+    child: FutureBuilder(
+      future: settingProv.readDark(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Container(
+            height: height ?? MediaQuery.of(context).size.height,
+            width: width ?? MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient:
+                  checkGradient(gradient ?? false, snapshot.data ?? false),
+              color: checkBgColor(snapshot.data ?? false),
+            ),
+            child: child,
+          );
+        }
+        return CircularProgressIndicator();
+      },
     ),
   );
 }
@@ -150,6 +181,7 @@ class MyTextInput extends StatelessWidget {
   final String subtitle;
   final onChanged;
   final secure;
+  final enabled;
 
   MyTextInput({
     Key? key,
@@ -158,6 +190,7 @@ class MyTextInput extends StatelessWidget {
     required this.subtitle,
     required this.onChanged(val),
     bool? this.secure,
+    bool? this.enabled,
   }) : super(key: key);
 
   @override
@@ -168,18 +201,20 @@ class MyTextInput extends StatelessWidget {
     return Stack(
       children: [
         TextFormField(
+          enabled: enabled ?? true,
           controller: textEditingController,
           textInputAction: TextInputAction.next,
           style: TextStyle(fontSize: 12),
           keyboardType: type,
           enableSuggestions: true,
-          scrollPadding: EdgeInsets.only(bottom: 40),
-          inputFormatters:
-              type == "number" ? [FilteringTextInputFormatter.digitsOnly] : [],
+          scrollPadding: EdgeInsets.only(bottom: 60),
+          inputFormatters: type == "number"
+              ? [FilteringTextInputFormatter.digitsOnly]
+              : null,
           decoration: InputDecoration(
             fillColor: Colors.red,
             labelText: subtitle,
-            labelStyle: TextStyle(color: Colors.black),
+            // labelStyle: TextStyle(color: Colors.black),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.yellow),
@@ -272,7 +307,7 @@ class MySecondaryTextButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         elevation: elevation ?? 1,
-        backgroundColor: bgColor ?? primaryColor,
+        backgroundColor: bgColor ?? primaryColor(context),
         padding: padding ?? EdgeInsets.zero,
         foregroundColor: fgColor ?? Colors.white,
       ),
