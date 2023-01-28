@@ -3,7 +3,6 @@ import 'package:code_project/Screen/SignUp_Screen.dart';
 import 'package:code_project/Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
@@ -106,6 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     password: loginProv.password.text,
                                   );
                                 }
+                                loginProv.password.text = "";
+                                throw Exception();
                               },
                             ),
 

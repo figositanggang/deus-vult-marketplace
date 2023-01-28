@@ -88,7 +88,6 @@ class AuthHelper {
         );
       }
     } on FirebaseAuthException catch (e) {
-      _showDialog(context, e.code.toString());
       if (e.code == "email-already-in-use") {
         _showDialog(context, "Email telah digunakan");
       } else if (e.code == "user-not-found") {
@@ -134,6 +133,7 @@ class AuthHelper {
     } on FirebaseAuthException catch (e) {
       _showDialog(context, e.code);
     }
+    print("WA");
   }
 }
 

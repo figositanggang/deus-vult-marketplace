@@ -13,8 +13,9 @@ import 'package:code_project/Widget.dart';
 import 'package:code_project/main.dart';
 
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+
 import 'package:intl/intl.dart';
+import 'package:localization/localization.dart';
 import 'package:provider/provider.dart';
 
 final BlurLoading = "assets/image/loading.png";
@@ -37,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final scrollProv = Provider.of<ScrollProvider>(context);
-    final settingProv = Provider.of<SettingScreenProvider>(context);
 
     return HomeContainer(
       context: context,
@@ -52,15 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
             "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1664288499/Deus%20Vult%20MarketPlace/deus_vult_ldopaf.png",
             width: 70,
           ),
-          actions: [
-            IconButton(
-              padding: EdgeInsets.zero,
-              tooltip: "Cari Barang",
-              onPressed: () =>
-                  Navigator.pushNamed(context, "/search_navigation"),
-              icon: Icon(Iconsax.search_normal),
-            ),
-          ],
         ),
         body: SingleChildScrollView(
           controller: scrollProv.scrollController,
@@ -100,7 +91,7 @@ class _Jumbotron extends StatelessWidget {
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "Diskon 45%",
+            "${"Discount".i18n()} 45%",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -238,7 +229,7 @@ class _Kategori extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Kategori",
+            "Category".i18n(),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -278,7 +269,7 @@ class _Kategori extends StatelessWidget {
         child: Stack(
           children: [
             CachedNetworkImage(
-              imageUrl: kategori['image'],
+              imageUrl: "${kategori['image']}",
               progressIndicatorBuilder: (context, url, progress) {
                 return Align(
                   alignment: Alignment.center,
@@ -293,7 +284,10 @@ class _Kategori extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Text(kategori["name"]),
+              child: Text(
+                '${kategori["name"]}'.i18n(),
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),
@@ -323,7 +317,7 @@ class _Rekomendasi extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Rekomendasi",
+            "Recommendation".i18n(),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

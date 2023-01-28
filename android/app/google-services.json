@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "572485955337",
-    "project_id": "dvs-marketplace-39bfa",
-    "storage_bucket": "dvs-marketplace-39bfa.appspot.com"
+    "project_number": "692855464471",
+    "project_id": "deus-vult-marketplace",
+    "storage_bucket": "deus-vult-marketplace.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:572485955337:android:29be87c60d34f2f5ffedd8",
+        "mobilesdk_app_id": "1:692855464471:android:db73871bd9bd5f3acbb252",
         "android_client_info": {
           "package_name": "com.example.code_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "572485955337-oh2bd2bdm0s764g6u8tksg3366v3pbls.apps.googleusercontent.com",
+          "client_id": "692855464471-ni4b532u9pihrrkbu38vn687n8is6444.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.code_project",
+            "certificate_hash": "91b3cbe47f78f8eaff30e0c7383db594bffc94a4"
+          }
+        },
+        {
+          "client_id": "692855464471-8dvqat9irkvf5n2hd7idh92cs9i58nob.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDEsvEFzv_h_P3cQrSkkMWnnc7Hq1-CiS4"
+          "current_key": "AIzaSyDV4zg6oYFLjZDKcYe-DhvnNsYfW7wtKUM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "572485955337-oh2bd2bdm0s764g6u8tksg3366v3pbls.apps.googleusercontent.com",
+              "client_id": "692855464471-8dvqat9irkvf5n2hd7idh92cs9i58nob.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

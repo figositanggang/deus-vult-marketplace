@@ -1,8 +1,9 @@
 import 'package:code_project/Model/all_model.dart';
 import 'package:code_project/Screen/Product_Screen.dart';
 import 'package:code_project/Widget.dart';
-import 'package:code_project/main.dart';
+
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 final allModel = AllModelClass();
 
@@ -33,7 +34,7 @@ class _KategoriNavigationScreenState extends State<KategoriNavigationScreen> {
         backgroundColor: Colors.transparent,
         appBar: MyAppBar(
           context,
-          title: Text(widget.kategori["name"]),
+          title: Text('${widget.kategori["name"]}'.i18n()),
           bgColor: Theme.of(context).primaryColor,
         ),
         body: SingleChildScrollView(

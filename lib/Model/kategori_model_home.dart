@@ -23,17 +23,17 @@ class KategoriModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665326521/Deus%20Vult%20MarketPlace/kategori/gaming_done_wizcxe.png",
     },
     {
-      "name": "Kipas Angin",
+      "name": "Fan",
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665326521/Deus%20Vult%20MarketPlace/kategori/kipas_angin_done_sn8kru.jpg",
     },
     {
-      "name": "Mesin Cuci",
+      "name": "Washing Machine",
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665326521/Deus%20Vult%20MarketPlace/kategori/mesin_cuci_done_nk9edj.jpg",
     },
     {
-      "name": "Setrika",
+      "name": "Iron",
       "image":
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665326522/Deus%20Vult%20MarketPlace/kategori/setrika_done_zraqmt.jpg",
     },

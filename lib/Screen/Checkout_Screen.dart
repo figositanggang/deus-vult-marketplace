@@ -2,8 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Screen.dart';
 import 'package:code_project/Widget.dart';
 import 'package:code_project/main.dart';
+import 'package:code_project/notification_helper.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:localization/localization.dart';
 import 'package:provider/provider.dart';
 
 class CheckOutScreen extends StatefulWidget {
@@ -46,7 +49,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       padding: EdgeInsets.symmetric(vertical: 8),
                       color: Colors.black.withOpacity(.1),
                       child: Text(
-                        "Preview",
+                        "Item".i18n(),
                         style: TextStyle(fontSize: 20),
                       ),
                       alignment: Alignment.topLeft,
@@ -85,7 +88,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         padding: EdgeInsets.symmetric(vertical: 8),
                         color: Colors.black.withOpacity(.1),
                         child: Text(
-                          "Metode Pembayaran",
+                          "Payment Method".i18n(),
                           style: TextStyle(fontSize: 20),
                         ),
                         alignment: Alignment.topLeft,
@@ -117,8 +120,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                               type: TextInputType.numberWithOptions(
                                   decimal: false),
                               subtitle: checkOutProv == ""
-                                  ? "Kode"
-                                  : "Kode ${checkOutProv.metode}",
+                                  ? "Code".i18n()
+                                  : "Code".i18n() + "${checkOutProv.metode}",
                               onChanged: (val) {
                                 checkOutProv.nomor = val;
                               },
@@ -131,7 +134,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                             MyTextInput(
                               textEditingController: checkOutProv.alamat,
                               type: TextInputType.name,
-                              subtitle: "Alamat",
+                              subtitle: "Address".i18n(),
                               onChanged: (val) {
                                 checkOutProv.alamat = val;
                               },
@@ -161,7 +164,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                child: Text("Bayar Sekarang"),
+                child: Text("Purchase Now".i18n()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromARGB(255, 0, 225, 255),
                   foregroundColor: Colors.black,
@@ -171,17 +174,24 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 ),
                 onPressed: () {
                   if (_key.currentState!.validate()) {
+                    NotificationHelper.showNotification(
+                      title: "Pembayaran".i18n(),
+                      body:
+                          "Pembayaran Berhasil\nTerima Kasih telah berbelanja",
+                      fln: FlutterLocalNotificationsPlugin(),
+                    );
                     showDialog(
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          content: Text("Pembayaran Berhasil"),
+                          content: Text("Successful Payment".i18n()),
                           actions: [
                             MyPrimaryTextButton(
                               text: "OK",
-                              onPressed: () =>
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, "/", (route) => false),
+                              onPressed: () {
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, "/", (route) => false);
+                              },
                             ),
                           ],
                         );
@@ -201,7 +211,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         value: provider.metode == "" ? null : provider.metode,
-        hint: Text("Metode Pembayaran"),
+        hint: Text("Payment Method".i18n()),
         items: List.generate(provider.items.length, (index) {
           var data = provider.items[index];
           return DropdownMenuItem<String>(

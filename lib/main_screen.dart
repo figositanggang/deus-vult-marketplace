@@ -1,13 +1,19 @@
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Screen.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
+import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/search_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Profile%20Screen/Profile_Screen.dart';
-import 'package:code_project/Bottom%20Navigation%20Screen/Shop%20Screen/Shop_Screen.dart';
-import 'package:code_project/Screen/Setting_Screen.dart';
+import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Navigation.dart';
+
 import 'package:code_project/main.dart';
+import 'package:code_project/notification_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -19,27 +25,30 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final List<Widget> body = [
     HomeScreen(),
-    ShopScreen(),
+    SearchNavigation(),
     ProfileScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+  }
 
   @override
   Widget build(BuildContext context) {
     final bottomProv = Provider.of<BottomNavProvider>(context);
     final List<IconData> icons = [
       Iconsax.home,
-      Iconsax.shop,
+      Iconsax.search_normal,
       Icons.account_circle_outlined,
     ];
     final scrollProv = Provider.of<ScrollProvider>(context);
-    final settingProv = Provider.of<SettingScreenProvider>(context);
+    final searchProv = Provider.of<HomeSearchProvider>(context);
 
     return Scaffold(
-      body: FutureBuilder(
-        builder: (context, snapshot) {
-          return body[bottomProv.index];
-        },
-      ),
+      body: body[bottomProv.index],
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(color: Colors.transparent),
@@ -68,8 +77,12 @@ class _MainScreenState extends State<MainScreen> {
                   if (index == 0 && scrollProv.scrollController.offset > 0) {
                     try {
                       scrollProv.scrollTop();
+                      searchProv.found.clear();
                     } catch (e) {}
+                  } else if (index == 2) {
+                    searchProv.found.clear();
                   }
+                  throw Exception();
                 },
               ),
             );

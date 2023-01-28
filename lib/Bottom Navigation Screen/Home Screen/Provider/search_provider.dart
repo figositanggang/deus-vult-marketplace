@@ -15,7 +15,7 @@ class HomeSearchProvider extends ChangeNotifier {
   List<Map<String, dynamic>> get found => this._found;
 
   set found(value) {
-    this._found.add(value);
+    this._found = value;
     notifyListeners();
   }
 }

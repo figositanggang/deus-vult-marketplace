@@ -5,10 +5,10 @@ import 'package:code_project/Widget.dart';
 import 'package:code_project/database/user_class.dart';
 
 import 'package:code_project/main.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:localization/localization.dart';
+
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -50,8 +50,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return FutureBuilder(
       future: authHelper.getUser(),
       builder: (context, snapshot) {
-        final settingProv = Provider.of<SettingScreenProvider>(context);
-
         return HomeContainer(
           context: context,
           gradient: false,
@@ -119,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             EdgeInsets.symmetric(vertical: 16, horizontal: 10),
                         content: Column(
                           children: [
-                            Text("Silahkan login terlebih dahulu"),
+                            Text("Please Login First".i18n()),
                           ],
                         ),
                       ),

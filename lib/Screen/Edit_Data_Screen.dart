@@ -81,7 +81,7 @@ class _EditDataScreenState extends State<EditDataScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: MyPrimaryTextButton(
-                          text: "SignUp",
+                          text: "Edit",
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           elevation: 1,
                           onPressed: () async {

@@ -1,4 +1,7 @@
-import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Navigation/Search_Navigation.dart';
+import 'dart:async';
+
+import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/locale_provider.dart';
+import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Navigation.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/carousel_slider_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/search_provider.dart';
@@ -13,13 +16,28 @@ import 'package:code_project/Screen/Setting_Screen.dart';
 import 'package:code_project/Screen/SignUp_Screen.dart';
 import 'package:code_project/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:localization/localization.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  FlutterError.onError = (details) {
+    FirebaseCrashlytics.instance.recordFlutterError(details);
+  };
+
+  PlatformDispatcher.instance.onError = (exception, stackTrace) {
+    FirebaseCrashlytics.instance
+        .recordError(exception, stackTrace, fatal: true);
+    return true;
+  };
 
   runApp(MultiProvider(
     providers: [
@@ -36,6 +54,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => SignUpScreenProvider()),
       ChangeNotifierProvider(create: (_) => SettingScreenProvider()),
       ChangeNotifierProvider(create: (_) => CheckoutProvider()),
+      ChangeNotifierProvider(create: (_) => LocaleProvider()),
     ],
     child: MyApp(),
   ));
@@ -47,35 +66,54 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settingProvider = Provider.of<SettingScreenProvider>(context);
+    final localeProv = Provider.of<LocaleProvider>(context);
+    LocalJsonLocalization.delegate.directories = ['assets/i18n'];
 
     return FutureBuilder(
       future: settingProvider.readDark(),
-      builder: (context, snapshot) {
-        return MaterialApp(
-          initialRoute: '/',
-          theme: snapshot.data != true
-              ? myTheme(context, settingProvider)
-              : ThemeData(
-                  brightness: Brightness.dark,
-                  primaryColor: Color.fromARGB(255, 37, 37, 37),
-                  appBarTheme: AppBarTheme(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Color.fromARGB(255, 60, 60, 60),
-                  ),
-                  inputDecorationTheme: InputDecorationTheme(
-                    labelStyle: TextStyle(color: Colors.white),
-                    hintStyle: TextStyle(color: Colors.white),
-                  ),
-                ),
-          routes: {
-            '/': (context) => MainScreen(),
-            "/search_navigation": (context) => SearchNavigation(),
-            '/login_screen': ((context) => LoginScreen()),
-            '/sign-up_screen': ((context) => SignUpScreen()),
-            '/edit-data_screen': ((context) => EditDataScreen()),
-            '/settings_screen': ((context) => SettingScreen()),
+      builder: (context, snapshotDark) {
+        return FutureBuilder(
+          future: localeProv.readLocale(),
+          builder: (context, AsyncSnapshot snapshotLocale) {
+            return MaterialApp(
+              initialRoute: '/',
+              theme: snapshotDark.data != true
+                  ? myTheme(context, settingProvider)
+                  : ThemeData(
+                      brightness: Brightness.dark,
+                      primaryColor: Color.fromARGB(255, 37, 37, 37),
+                      appBarTheme: AppBarTheme(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color.fromARGB(255, 60, 60, 60),
+                      ),
+                      inputDecorationTheme: InputDecorationTheme(
+                        labelStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.white),
+                      ),
+                    ),
+              routes: {
+                '/': (context) => MainScreen(),
+                "/search_navigation": (context) => SearchNavigation(),
+                '/login_screen': ((context) => LoginScreen()),
+                '/sign-up_screen': ((context) => SignUpScreen()),
+                '/edit-data_screen': ((context) => EditDataScreen()),
+                '/settings_screen': ((context) => SettingScreen()),
+              },
+              debugShowCheckedModeBanner: false,
+              locale: snapshotLocale.data == true
+                  ? Locale('en', 'US')
+                  : Locale('id', 'ID'),
+              supportedLocales: [
+                Locale('en', 'US'),
+                Locale('id', 'ID'),
+              ],
+              localizationsDelegates: [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                LocalJsonLocalization.delegate,
+              ],
+            );
           },
-          debugShowCheckedModeBanner: false,
         );
       },
     );

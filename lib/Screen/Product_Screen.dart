@@ -4,6 +4,7 @@ import 'package:code_project/Screen/Checkout_Screen.dart';
 import 'package:code_project/Widget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -71,7 +72,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton(
                           onPressed: _launcUrl,
-                          child: Text("Info Selengkapnya"),
+                          child: Text("More Info".i18n()),
                         ),
                       ),
                     ],
@@ -94,7 +95,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 );
               },
               padding: EdgeInsets.symmetric(horizontal: 10),
-              text: "Beli Sekarang",
+              text: "Buy Now".i18n(),
             ),
           ],
         ),

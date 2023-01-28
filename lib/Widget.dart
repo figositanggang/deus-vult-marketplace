@@ -157,19 +157,15 @@ Widget HomeContainer({
     child: FutureBuilder(
       future: settingProv.readDark(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Container(
-            height: height ?? MediaQuery.of(context).size.height,
-            width: width ?? MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              gradient:
-                  checkGradient(gradient ?? false, snapshot.data ?? false),
-              color: checkBgColor(snapshot.data ?? false),
-            ),
-            child: child,
-          );
-        }
-        return CircularProgressIndicator();
+        return Container(
+          height: height ?? MediaQuery.of(context).size.height,
+          width: width ?? MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            gradient: checkGradient(gradient ?? false, snapshot.data ?? false),
+            color: checkBgColor(snapshot.data ?? false),
+          ),
+          child: child,
+        );
       },
     ),
   );

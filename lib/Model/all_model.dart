@@ -174,7 +174,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323158/Deus%20Vult%20MarketPlace/kipas%20angin/Sharp_PJ-A26MY-B_Air_Cooler_dpim9a.png",
       "harga": 740000,
       "spec": "https://id.sharp/products/air-care/65-air-cooler-pj-a26my-b",
-      "kategori": "Kipas Angin",
+      "kategori": "Fan",
     },
     {
       "name": "Arashi AR 118 SDW Kipas Angin 3in1 18 inch",
@@ -183,7 +183,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 255000,
       "spec":
           "https://www.blibli.com/p/arashi-ar-118-sdw-kipas-angin-3in1-18-inch/ps--SEB-60059-00136",
-      "kategori": "Kipas Angin",
+      "kategori": "Fan",
     },
     {
       "name": "Arashi Helifan AR 28 Kipas Angin Gantung 15 Watt",
@@ -192,7 +192,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 50000,
       "spec":
           "https://www.blibli.com/p/arashi-helifan-ar-28-kipas-angin-gantung-15-watt-small-40-cm/ps--BPS-60023-00119",
-      "kategori": "Kipas Angin",
+      "kategori": "Fan",
     },
     {
       "name": "SANEX DESK FAN KIPAS ANGIN FD 1287 FD 1287 12 INCH",
@@ -201,7 +201,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 134000,
       "spec":
           "https://shopee.co.id/Kipas-Angin-Duduk-Sanex-12-inch-FD-1287-Desk-Fan-SNI-i.134613840.2027322441",
-      "kategori": "Kipas Angin",
+      "kategori": "Fan",
     },
     {
       "name": "KIPAS ANGIN MIYAKO kas 1607",
@@ -209,7 +209,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323157/Deus%20Vult%20MarketPlace/kipas%20angin/KIPAS_ANGIN_MIYAKO_kas_1607_elcurs.png",
       "harga": 300000,
       "spec": "https://www.miyako.co.id/electric-fan-miyako-kas-1607/",
-      "kategori": "Kipas Angin",
+      "kategori": "Fan",
     },
     {
       "name": "Mesin Cuci Samsung Front Load 8Kg",
@@ -218,7 +218,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 5949000,
       "spec":
           "https://www.samsung.com/id/washers-and-dryers/washing-machines/front-load-8kg-white-ww80j42g0iw-se/",
-      "kategori": "Mesin Cuci",
+      "kategori": "Washing Machine",
     },
     {
       "name": "POLYTRON Mesin Cuci Tabung Samba Series KG PWM 8363P",
@@ -226,7 +226,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323163/Deus%20Vult%20MarketPlace/mesin%20cuci/POLYTRON_Mesin_Cuci_2_Tabung_Samba_Series_8_KG_-_PWM_8363P_m9hubm.png",
       "harga": 1500000,
       "spec": "https://iprice.co.id/harga/polytron-pwm-8363/",
-      "kategori": "Mesin Cuci",
+      "kategori": "Washing Machine",
     },
     {
       "name": "MESIN CUCI SHARP ES-T90MW 8Kg",
@@ -235,7 +235,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 1300000,
       "spec":
           "https://www.bhinneka.com/sharp-mesin-cuci-top-load-es-t90mw-pk-sku3324404371",
-      "kategori": "Mesin Cuci",
+      "kategori": "Washing Machine",
     },
     {
       "name": "MESIN CUCI TABUNG KG PORTABLE TOP LOADING ARASHI AWM 451A",
@@ -244,7 +244,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 615000,
       "spec":
           "https://www.tokopedia.com/nadhifahsho/mesin-cuci-1-tabung-4-5-kg-portable-top-loading-arashi-awm-451a",
-      "kategori": "Mesin Cuci",
+      "kategori": "Washing Machine",
     },
     {
       "name": "MITO Mesin Cuci Portable Wm-1",
@@ -252,7 +252,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323161/Deus%20Vult%20MarketPlace/mesin%20cuci/MITO_Mesin_Cuci_Portable_WM-1_xvms3q.png",
       "harga": 600000,
       "spec": "https://www.tokopedia.com/find/mesin-cuci-portable-mito",
-      "kategori": "Mesin Cuci",
+      "kategori": "Washing Machine",
     },
     {
       "name": "Setrika Miyako El 1000M",
@@ -260,7 +260,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323173/Deus%20Vult%20MarketPlace/setrika/Setrika_Miyako_EI_-_1000_M_zwybjj.png",
       "harga": 195000,
       "spec": "https://www.tokopedia.com/find/setrika-miyako-el-1000",
-      "kategori": "Setrika",
+      "kategori": "Iron",
     },
     {
       "name": "Setrika Maspion HA 110",
@@ -268,7 +268,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323173/Deus%20Vult%20MarketPlace/setrika/SETRIKA_MASPION_HA_-_110_dq45ak.png",
       "harga": 195000,
       "spec": "https://www.tokopedia.com/find/setrika-maspion-ha-110",
-      "kategori": "Setrika",
+      "kategori": "Iron",
     },
     {
       "name": "PHILIPS Setrika Listrik HD 1172 Classic Dry Iron",
@@ -276,7 +276,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323167/Deus%20Vult%20MarketPlace/setrika/PHILIPS_Setrika_Listrik_HD_1172_Classic_Dry_Iron_tyn5b3.png",
       "harga": 120000,
       "spec": "https://www.tokopedia.com/find/setrika-philips-hd1172",
-      "kategori": "Setrika",
+      "kategori": "Iron",
     },
     {
       "name": "Philips 3000 Series Steam Iron",
@@ -284,7 +284,7 @@ class AllModelClass extends ChangeNotifier {
           "https://res.cloudinary.com/angelo-della-morte-company/image/upload/v1665323162/Deus%20Vult%20MarketPlace/setrika/Philips_3000_Series_Steam_Iron_ojjrn0.png",
       "harga": 270000,
       "spec": "https://www.philips.com/c-p/DST3040_76/3000-series-steam-iron",
-      "kategori": "Setrika",
+      "kategori": "Iron",
     },
     {
       "name": "FeatherLight Setrika Uap",
@@ -293,7 +293,7 @@ class AllModelClass extends ChangeNotifier {
       "harga": 1500000,
       "spec":
           "https://www.google.com/aclk?sa=l&ai=DChcSEwietP-05rn7AhXKNSsKHSeKDEIYABAAGgJzZg&sig=AOD64_0naFAMjhEpHqwM0Bc5oFf-Lhdfmg&q&adurl&ved=2ahUKEwj4g_m05rn7AhW35nMBHWuMBzgQ0Qx6BAgKEAE",
-      "kategori": "Setrika",
+      "kategori": "Iron",
     },
     {
       "name": "Xiaomi 11T Pro",
