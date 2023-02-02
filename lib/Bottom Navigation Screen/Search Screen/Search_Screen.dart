@@ -4,9 +4,11 @@ import 'package:code_project/Screen/Product_Screen.dart';
 import 'package:code_project/Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:localization/localization.dart';
 
 import 'package:provider/provider.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class SearchNavigation extends StatefulWidget {
   const SearchNavigation({Key? key}) : super(key: key);
@@ -19,9 +21,14 @@ class _SearchNavigationState extends State<SearchNavigation> {
   late BannerAd bannerAd;
   bool isBannerAdReady = false;
 
+  late stt.SpeechToText speechToText;
+  bool isListening = false;
+
   @override
   void initState() {
     super.initState();
+
+    speechToText = stt.SpeechToText();
 
     loadBanner();
   }
@@ -122,6 +129,12 @@ class _SearchNavigationState extends State<SearchNavigation> {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            listen(_prov);
+          },
+          child: Icon(isListening ? Iconsax.microphone : Icons.mic_off),
+        ),
       ),
     );
   }
@@ -161,5 +174,32 @@ class _SearchNavigationState extends State<SearchNavigation> {
     );
 
     bannerAd.load();
+  }
+
+  void listen(HomeSearchProvider provider) async {
+    if (!isListening) {
+      bool available = false;
+      await speechToText.initialize();
+      available = true;
+
+      if (available) {
+        setState(() {
+          isListening = true;
+        });
+        speechToText.listen(
+          onResult: (result) {
+            provider.controller = result.recognizedWords;
+            setState(() {
+              isListening = false;
+            });
+          },
+        );
+      }
+    } else {
+      setState(() {
+        isListening = false;
+      });
+      speechToText.stop();
+    }
   }
 }

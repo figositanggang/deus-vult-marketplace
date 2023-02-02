@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/locale_provider.dart';
-import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Navigation.dart';
+import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Screen.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/carousel_slider_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/search_provider.dart';

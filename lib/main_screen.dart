@@ -2,7 +2,7 @@ import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Home_Scr
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/scroll_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Home%20Screen/Provider/search_provider.dart';
 import 'package:code_project/Bottom%20Navigation%20Screen/Profile%20Screen/Profile_Screen.dart';
-import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Navigation.dart';
+import 'package:code_project/Bottom%20Navigation%20Screen/Search%20Screen/Search_Screen.dart';
 
 import 'package:code_project/main.dart';
 import 'package:code_project/notification_helper.dart';
